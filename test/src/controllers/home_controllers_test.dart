@@ -12,7 +12,9 @@ main() {
 
   test('Deve preencher variável todos', () async {
     when(repository.fetchTodos()).thenAnswer((_) async => [TodoModel()]);
+    expect(controller.state, HomeState.start);
     await controller.start();
+    expect(controller.state, HomeState.success);
     expect(controller.todos.isNotEmpty, true);
   });
 }
